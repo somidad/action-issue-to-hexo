@@ -1,0 +1,10 @@
+name: Issue to Hexo
+author: Seokseong Jeon
+description: GitHub Action which converts GitHub Issue to Hexo post
+inputs:
+  token:
+    description: Personal access token
+    required: true
+runs:
+  using: node12
+  main: dist/index.js
