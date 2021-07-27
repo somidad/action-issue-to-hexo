@@ -20,7 +20,7 @@ In converting, this action takes information of an issue and set it to informati
 name: Issue to Hexo
 on:
   issues:
-    # This action converts 
+    # Sufficient to trigger this workflow when an issue is milestoned
     types: [ milestoned ]
 jobs:
   build:
@@ -32,6 +32,6 @@ jobs:
           issue_url: ${{ github.event.issue.url }}
           # Personal access token used to get information of Issue
           token: ${{ secrects.token }}
-      # At this point, a markdown file is generated and unstaged
+      # At this point, a markdown file is generated and untracked
       # Take further action, e.g. generate (`hexo generate`), commit and push
 ```
