@@ -34,10 +34,11 @@ try {
     var gh_1 = new octokit_1.Octokit({ auth: token });
     var hexo_2 = new hexo_1.default(process.cwd(), {});
     hexo_2.init().then(function () {
+        console.log("Converting issue " + endpoint_1 + " to Hexo post...");
         gh_1.request("GET " + endpoint_1).then(function (response) {
             var _a = response.data, title = _a.title, date = _a.updated_at, labels = _a.labels, milestone = _a.milestone, content = _a.body;
             if (milestone.title !== MILESTONE_PUBLISH) {
-                console.log("Issue " + endpoint_1 + " does not have milestone " + MILESTONE_PUBLISH);
+                console.log("Issue does not have milestone " + MILESTONE_PUBLISH);
             }
             else {
                 var tags = labels.map(function (label) { return label.name; });

@@ -14,10 +14,11 @@ try {
 
     const hexo = new Hexo(process.cwd(), {});
     hexo.init().then(() => {
+        console.log(`Converting issue ${endpoint} to Hexo post...`);
         gh.request(`GET ${endpoint}`).then((response) => {
             const { title, updated_at: date, labels, milestone, body: content } = response.data;
             if (milestone.title !== MILESTONE_PUBLISH) {
-                console.log(`Issue ${endpoint} does not have milestone ${MILESTONE_PUBLISH}`);
+                console.log(`Issue does not have milestone ${MILESTONE_PUBLISH}`);
             } else {
                 const tags = labels.map((label: any) => label.name);
                 hexo.post.create({
