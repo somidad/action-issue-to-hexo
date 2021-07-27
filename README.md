@@ -31,7 +31,7 @@ jobs:
         with:
           issue_url: ${{ github.event.issue.url }}
           # Personal access token used to get information of Issue
-          token: ${{ secrects.token }}
+          token: ${{ secrets.token }}
       # At this point, a markdown file is generated and untracked
       # Take further action, e.g. generate (`hexo generate`), commit and push
 ```
